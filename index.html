@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- place where stuff goes -->
+    <div id="main"></div>
+
+    <!-- sctipts -->
+    <script type="text/javascript" src="./data.js"></script>
+    <script type="text/javascript" src="./code.js"></script>
+    <script type="text/javascript" src="./linktrees.js"></script>
+    <script>
+        function addToPage(str, tag) {
+            document.querySelector('#main').append(elementContainingString(str, tag))
+        }
+        // Entities heading
+        addToPage('Entities', 'h1')
+
+        // loop through and display entities
+        entities.sort( (e1, e2) => e1.name.localeCompare(e2.name) ).forEach( e =>
+            addToPage(renderEntityFull(e))
+        )
+
+        // Links heading
+        addToPage('Links', 'h1')
+
+        // Loop through and display all links
+        links.forEach( l =>
+            addToPage(renderLink(l))
+        )
+
+        // Hierarchies heading
+        addToPage('Links With Nesting', 'h1')
+
+        // Hierarchy display
+        addToPage(renderTree('allegiance'), 'ul')
+
+        addToPage(renderTree('bending subskill'), 'ul')
+
+
+    </script>
+</body>
+</html>
